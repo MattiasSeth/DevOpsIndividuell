@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://dpg-crjueqrtq21c73a6m5lg-a.frankfurt-postgres.render.com/database_d1d6
+      SPRING_DATASOURCE_USERNAME: database_d1d6_user
+      SPRING_DATASOURCE_PASSWORD: jnGPgxErCA8mJoezWg4v7JsgmG0cfFhv
+    depends_on:
+      - db
+
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: database_d1d6
+      POSTGRES_USER: database_d1d6_user
+      POSTGRES_PASSWORD: jnGPgxErCA8mJoezWg4v7JsgmG0cfFhv
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
