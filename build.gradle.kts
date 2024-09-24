@@ -35,6 +35,7 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     implementation ("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation ("jakarta.persistence:jakarta.persistence-api:3.1.0")
+    testImplementation("com.h2database:h2")
 }
 
 tasks.withType<Test> {
