@@ -10,11 +10,9 @@ import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
@@ -49,7 +47,6 @@ class NackademinServiceTest {
 
         assertNotEquals(3L,allCourses.get(1).getId());
         assertNotEquals("Hej123",allCourses.get(0).getSolution());
-        assertNotEquals(1L,allCourses.get(0).getCourseName());
 
     }
 
@@ -65,7 +62,7 @@ class NackademinServiceTest {
         when(nackademinRepo.findAll()).thenReturn(Arrays.asList(n1,n2,n3));
     }
 
-    Nackademin nackademin = new Nackademin(1L,"Java","111");
+    final Nackademin nackademin = new Nackademin(1L,"Java","111");
 
     @Test
     void getAllCourses() {
